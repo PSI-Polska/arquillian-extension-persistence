@@ -8,11 +8,11 @@
     See : http://community.jboss.org/message/622917
           https://issues.jboss.org/browse/AS7-1696
   -->
-  <defaultProtocol type="Servlet 3.0"/>
+  <defaultProtocol type="Servlet 5.0"/>
 
   <container qualifier="chameleon" default="true">
     <configuration>
-      <property name="chameleonTarget">wildfly:8.1.0.Final:managed</property>
+      <property name="chameleonTarget">wildfly:30.0.0.Final:managed</property>
       <property name="javaVmArguments">-Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=256m
         -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=n
       </property>
