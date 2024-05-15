@@ -34,6 +34,7 @@ import org.dbunit.dataset.stream.IDataSetProducer;
 import org.jboss.arquillian.persistence.dbunit.dataset.Row;
 import org.jboss.arquillian.persistence.dbunit.dataset.Table;
 import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.nodes.Tag;
@@ -86,8 +87,8 @@ public class YamlDataSetProducer implements IDataSetProducer {
     }
 
     public Yaml createYamlReader() {
-        final Yaml yaml = new Yaml(new Constructor(), new Representer(), new DumperOptions(),
-            new Resolver() {
+        final Yaml yaml = new Yaml(new Constructor(new LoaderOptions()), new Representer(new DumperOptions()),
+            new DumperOptions(), new Resolver() {
                 @Override
                 protected void addImplicitResolvers() {
                     // Intentionally left TIMESTAMP as string to let DBUnit deal with the conversion
